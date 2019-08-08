@@ -1,6 +1,6 @@
 {
   "name": "contacts-app",
-  "description": "Simple Contact Manager app in React."
+  "description": "Simple Contact Manager app in React.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
