@@ -17,7 +17,7 @@ export default class AddContact extends Component {
     this.setState({ [name]: value });
   }
 
-  onSubmit = (e, dispatch) => {
+  onSubmit = async (e, dispatch) => {
     e.preventDefault();
 
     const { name, email, phone } = this.state;
@@ -29,9 +29,8 @@ export default class AddContact extends Component {
 
     const newContact = { name, email, phone }
 
-    axios.post('https://jsonplaceholder.typicode.com/users', newContact)
-      .then(res => dispatch({ type: 'ADD_CONTACT', payload: res.data }) )
-
+    const res = await axios.post('https://jsonplaceholder.typicode.com/users', newContact);
+    dispatch({ type: 'ADD_CONTACT', payload: res.data });
 
     this.setState({ name: '', email: '', phone: '', errors: {} });
 
