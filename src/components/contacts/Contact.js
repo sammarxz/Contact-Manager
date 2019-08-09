@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Consumer } from '../../context';
 
@@ -32,9 +33,31 @@ export default class Item extends Component {
             <div className="card card-body mb-3">
               <h4>
                 { name } 
-                <i className="fa fa-sort-down" style={{ cursor: 'pointer' }} onClick={ this.onShowClick }></i>
-                <i className="fa fa-times" style={{ cursor: 'pointer', color: 'red', float: 'right' }} 
-                  onClick={ () => this.onDeleteClick(id, dispatch) }></i>
+                <i 
+                  className="fa fa-sort-down" 
+                  style={{ cursor: 'pointer' }} 
+                  onClick={ this.onShowClick } 
+                />
+                <i 
+                  className="fa fa-times" 
+                  style={{ 
+                    cursor: 'pointer', 
+                    color: 'red', 
+                    float: 'right' 
+                  }} 
+                  onClick={ () => this.onDeleteClick(id, dispatch) } 
+                />
+                <Link to={`/edit/${ id }`}>
+                  <i 
+                    className="fa fa-pencil" 
+                    style={{ 
+                      float:'right', 
+                      cursor: 'pointer' ,
+                      color: 'black',
+                      marginRight: '1rem'
+                    }} 
+                  />
+                </Link>
               </h4>
               { showContactInfo ? (
                 <ul className="list-group">
